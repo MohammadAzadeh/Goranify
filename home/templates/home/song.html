@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card text-center" style="width: 100%;" data-aos="fade-off">
+  <div class="card-body">
+    <h5 class="card-title border-bottom">{{ song.name }}</h5>
+    <p class="card-text">دانلود اهنگ  {{ song.name }}  از  {{ song.artists }}</p>
+    {% if song.cover %}
+    <img src="{{ song.cover.url }}" class="cover" alt="">
+    {% endif %}
+    <br />
+    <audio controls>
+      {% if song.file_128 %}
+      <source src="{{ song.file_128.url }}" type="audio/mp3">
+      {% elif song.file_320 %}
+      <source src="{{ song.file_320.url }}" type="audio/mp3">
+      {% endif %}
+    Your browser does not support the audio element.
+    </audio>
+    <br />
+    {% for line in song.text_lines %}
+    {{ line }}
+    <br />
+    {% endfor %}
+    <br />
+    {% if song.file_128 %}
+    <a href="{{ song.file_128.url }}" class="btn btn-dark" download>دانلود با کیفیت 128</a>
+    {% endif %}
+    {% if song.file_320 %}
+    <a href="{{ song.file_320.url }}" class="btn btn-dark" download>دانلود با کیفیت 320</a>
+    {% endif %}
+    <br />
+    <a href="{% url 'home:song_artist' song.main_artist.slug %}" class="btn btn-dark">دانلود کل آهنگ های {{ song.main_artist.name }}</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for album in albums %}
+<div class="card text-center" style="width: 100%;" data-aos="fade-off">
+  <div class="card-body">
+    <h5 class="card-title border-bottom">آلبوم {{ album.name }} از {{ album.artist.name }}</h5>
+    <p class="card-text">دانلود آلبوم {{ album.name }} از {{ album.artist }}</p>
+    {% if album.cover %}
+    <img src="{{ album.cover.url }}" class="cover" alt="">
+    {% endif %}
+    <br />
+  </div>
+  <a href="{% url 'home:song_album' album.id album.slug %}" class="btn btn-primary">ادامه مطلب+دانلود</a>
+</div>
+{% endfor %}
+
+{% endblock %}

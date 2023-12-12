@@ -1,0 +1,42 @@
+{% if page == 1 %}
+      <nav aria-label="...">
+        <form action="">
+        <ul class="pagination">
+          <li class="page-item">
+            <button class="page-link" name="page" value="{{ page_count }}" aria-label="Next">
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+          </li>
+          <li class="page-item"><span class="page-link">...</span></li>
+          <li class="page-item"><button class="page-link" name="page" value="5">5</button></li>
+          <li class="page-item"><button class="page-link" name="page" value="4">4</button></li>
+          <li class="page-item"><button class="page-link" name="page" value="3">3</button></li>
+          <li class="page-item"><button class="page-link" name="page" value="2">2</button></li>
+          <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+        </ul>
+      </form>
+      </nav>
+      {% else %}
+      <nav aria-label="...">
+        <form action="">
+        <ul class="pagination">
+          <li class="page-item">
+            <button class="page-link" name="page" value="{{ page_count }}" aria-label="Next">
+              <span aria-hidden="true">&laquo;</span>
+            </button>
+          </li>
+          <li class="page-item"><span class="page-link">...</span></li>
+          <li class="page-item"><button class="page-link" name="page" value="{{ page|add:3 }}">{{ page|add:3 }}</button></li>
+          <li class="page-item"><button class="page-link" name="page" value="{{ page|add:2 }}">{{ page|add:2 }}</button></li>
+          <li class="page-item"><button class="page-link" name="page" value="{{ page|add:1 }}">{{ page|add:1 }}</button></li>
+          <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+          <li class="page-item"><button class="page-link" name="page" value="{{ page|add:-1 }}">{{ page|add:-1 }}</button></li>
+          <li class="page-item">
+            <button class="page-link" name="page" value="1" aria-label="Previous">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </form>
+      </nav>    
+      {% endif %}  

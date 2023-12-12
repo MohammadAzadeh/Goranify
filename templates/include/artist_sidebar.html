@@ -1,0 +1,33 @@
+<div class="flex-shrink-0 p-3 bg-white" style="width: 100%;">
+    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none">
+      <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-5 fw-semibold">اسامی خوانندگان</span>
+    </a>
+    <div class="text-center asami">
+      <div class="row">
+        <div class="col">
+        {% for artist in artists1 %}
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
+              <a href="{% url 'home:song_artist' artist.slug %}" class="btn btn-toggle align-items-center">
+                {{ artist.name }}
+              </a>
+            </li>
+          </ul>
+        {% endfor %}
+        </div>
+        <div class="col">
+            {% for artist in artists2 %}
+              <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                  <a href="{% url 'home:song_artist' artist.slug %}" class="btn btn-toggle align-items-center">
+                    {{ artist.name }}
+                  </a>
+                </li>
+              </ul>
+            {% endfor %}
+            </div>
+      </div>
+      
+    </div>
+  </div>
